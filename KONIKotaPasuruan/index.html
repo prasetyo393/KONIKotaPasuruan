@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porprov Kota Pasuruan — Pencapaian Gemilang</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navigasi utama">
+        <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+            <a href="#hero" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+                <div
+                    style="width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                    <img src="assets/LOGO KONI.png" alt="Logo KONI" style="width:100%;height:100%;object-fit:contain;">
+                </div>
+                <span class="title" style="font-weight:800;font-size:16px;color:var(--fg);letter-spacing:-0.01em;">KONI
+                    <span style="color:var(--accent);">Kota Pasuruan</span>
+                </span>
+            </a>
+            <div style="display:flex;align-items:center;gap:4px;" id="navLinks">
+                <a href="#tentang" class="nav-link">Tentang</a>
+                <a href="data/prestasi.html" class="nav-link">Prestasi</a>
+                <a href="data/cabor.html" class="nav-link">Cabor</a>
+                <a href="#cta" class="nav-link active">Lihat Data</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <canvas id="heroCanvas"></canvas>
+
+        <div style="position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:120px 24px 80px;width:100%;">
+            <div class="hero-flex" style="display:flex;align-items:center;gap:60px;">
+                <div style="flex:1;min-width:0;">
+                    <div class="section-label" style="margin-bottom:24px;">
+                        <i class="fa-solid fa-fire"></i> Pekan Olahraga Provinsi
+                    </div>
+                    <h1 class="hero-title">
+                        Pencapaian<br>
+                        <span style="color:var(--accent);position:relative;">
+                            Gemilang
+                            <svg style="position:absolute;bottom:-4px;left:0;width:100%;height:10px;overflow:visible;"
+                                viewBox="0 0 200 10" fill="none">
+                                <path d="M2 7 C50 2, 150 2, 198 7" stroke="rgba(37,99,235,0.2)" stroke-width="2.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span>
+                        Kota Pasuruan
+                    </h1>
+                    <p class="hero-subtitle" style="margin-top:24px;">
+                        Tiga edisi Porprov membuktikan kekuatan Kota Pasuruan dalam kancah olahraga nasional. Ratusan
+                        medali dari puluhan cabang olahraga — sebuah warisan prestasi yang terus bertumbuh.
+                    </p>
+                    <div class="hero-buttons" style="display:flex;gap:12px;margin-top:36px;flex-wrap:wrap;">
+                        <a href="data/prestasi.html" class="btn-primary">
+                            <i class="fa-solid fa-chart-column"></i> Lihat Statistik
+                        </a>
+                        <a href="#sejarah" class="btn-secondary">
+                            <i class="fa-solid fa-clock-rotate-left"></i> Jejak Prestasi
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero right: Mini medal summary -->
+                <div style="flex:0 0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="heroStatGrid">
+                    <div class="stat-card" style="min-width:140px;">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                            <div class="medal-icon gold-icon" style="width:34px;height:34px;font-size:14px;"><i
+                                    class="fa-solid fa-medal"></i></div>
+                            <span
+                                style="font-size:10px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;">Emas</span>
+                        </div>
+                        <p class="counter-value" id="heroEmas" style="color:var(--gold);" data-target="0">—</p>
+                    </div>
+                    <div class="stat-card" style="min-width:140px;">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                            <div class="medal-icon silver-icon" style="width:34px;height:34px;font-size:14px;"><i
+                                    class="fa-solid fa-medal"></i></div>
+                            <span
+                                style="font-size:10px;font-weight:700;color:var(--silver);text-transform:uppercase;letter-spacing:0.06em;">Perak</span>
+                        </div>
+                        <p class="counter-value" id="heroPerak" style="color:var(--silver);" data-target="0">—</p>
+                    </div>
+                    <div class="stat-card" style="min-width:140px;">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                            <div class="medal-icon bronze-icon" style="width:34px;height:34px;font-size:14px;"><i
+                                    class="fa-solid fa-medal"></i></div>
+                            <span
+                                style="font-size:10px;font-weight:700;color:var(--bronze);text-transform:uppercase;letter-spacing:0.06em;">Perunggu</span>
+                        </div>
+                        <p class="counter-value" id="heroPerunggu" style="color:var(--bronze);" data-target="0">—</p>
+                    </div>
+                    <div class="stat-card" style="min-width:140px;">
+                        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+                            <div class="medal-icon"
+                                style="width:34px;height:34px;font-size:14px;background:var(--accent-light);color:var(--accent);">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <span
+                                style="font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;">Total</span>
+                        </div>
+                        <p class="counter-value" id="heroTotal" style="color:var(--fg);" data-target="0">—</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse"></div>
+            <span style="font-size:10px;color:var(--muted-light);font-weight:600;letter-spacing:0.1em;">SCROLL</span>
+        </div>
+    </section>
+
+    <!-- Tentang Section -->
+    <section id="tentang" style="padding:100px 24px;position:relative;z-index:1;">
+        <div style="max-width:1280px;margin:0 auto;">
+            <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;"
+                id="aboutGrid">
+                <div>
+                    <div class="section-label"><i class="fa-solid fa-circle-info"></i> Tentang</div>
+                    <h2 class="section-title">Apa Itu Porprov Jawa Timur?</h2>
+                    <p class="section-desc" style="margin-bottom:18px;">
+                        Pekan Olahraga Provinsi (Porprov) Jawa Timur adalah ajang kompetisi olahraga terbesar di tingkat
+                        provinsi, diselenggarakan setiap empat tahun sebagai seleksi menuju PON.
+                    </p>
+                    <p class="section-desc" style="margin-bottom:28px;">
+                        Sejak edisi pertama, kontingen Kota Pasuruan telah menunjukkan hasil yang konsisten — meraih
+                        ratusan medali dari berbagai cabang olahraga dan mempertahankan posisi sebagai kekuatan olahraga
+                        utama di Indonesia.
+                    </p>
+                    <div style="display:flex;gap:28px;flex-wrap:wrap;">
+                        <div>
+                            <p id="aboutEdisi" style="font-size:28px;font-weight:900;color:var(--accent);">—</p>
+                            <p style="font-size:12px;color:var(--muted);font-weight:600;">Edisi Porprov</p>
+                        </div>
+                        <div style="width:1px;background:var(--border);"></div>
+                        <div>
+                            <p id="aboutCabor" style="font-size:28px;font-weight:900;color:var(--fg);">—</p>
+                            <p style="font-size:12px;color:var(--muted);font-weight:600;">Cabang Olahraga</p>
+                        </div>
+                        <div style="width:1px;background:var(--border);"></div>
+                        <div>
+                            <p id="aboutTotalMedali" style="font-size:28px;font-weight:900;color:var(--fg);">—</p>
+                            <p style="font-size:12px;color:var(--muted);font-weight:600;">Total Medali</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="donut-card">
+                        <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+                            <div
+                                style="width:40px;height:40px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;">
+                                <i class="fa-solid fa-chart-pie" style="color:var(--accent);font-size:16px;"></i>
+                            </div>
+                            <div>
+                                <p style="font-weight:800;font-size:15px;color:var(--fg);">Distribusi Medali</p>
+                                <p style="font-size:12px;color:var(--muted);">Keseluruhan <span
+                                        id="donutEdisiCount">—</span> edisi</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;">
+                            <div style="position:relative;width:130px;height:130px;">
+                                <svg viewBox="0 0 36 36" style="width:100%;height:100%;transform:rotate(-90deg);">
+                                    <circle id="donutBronze" cx="18" cy="18" r="14" fill="none" stroke="var(--bronze)"
+                                        stroke-width="3.5" stroke-dasharray="0 88" stroke-dashoffset="0"
+                                        style="transition:stroke-dasharray 1.5s ease;" />
+                                    <circle id="donutSilver" cx="18" cy="18" r="14" fill="none" stroke="var(--silver)"
+                                        stroke-width="3.5" stroke-dasharray="0 88" stroke-dashoffset="0"
+                                        style="transition:stroke-dasharray 1.5s ease 0.2s;" />
+                                    <circle id="donutGold" cx="18" cy="18" r="14" fill="none" stroke="var(--gold)"
+                                        stroke-width="3.5" stroke-dasharray="0 88" stroke-dashoffset="0"
+                                        style="transition:stroke-dasharray 1.5s ease 0.4s;" />
+                                </svg>
+                                <div
+                                    style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+                                    <span id="donutCenterNum"
+                                        style="font-size:22px;font-weight:900;color:var(--fg);">—</span>
+                                    <span
+                                        style="font-size:9px;color:var(--muted);font-weight:600;letter-spacing:0.06em;">MEDALI</span>
+                                </div>
+                            </div>
+                            <div style="display:flex;flex-direction:column;gap:14px;">
+                                <div style="display:flex;align-items:center;gap:10px;">
+                                    <div style="width:10px;height:10px;border-radius:3px;background:var(--gold);"></div>
+                                    <div>
+                                        <p style="font-size:13px;font-weight:700;color:var(--fg);">Emas</p>
+                                        <p id="donutEmasLabel" style="font-size:11px;color:var(--muted);">— medali</p>
+                                    </div>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:10px;">
+                                    <div style="width:10px;height:10px;border-radius:3px;background:var(--silver);">
+                                    </div>
+                                    <div>
+                                        <p style="font-size:13px;font-weight:700;color:var(--fg);">Perak</p>
+                                        <p id="donutPerakLabel" style="font-size:11px;color:var(--muted);">— medali</p>
+                                    </div>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:10px;">
+                                    <div style="width:10px;height:10px;border-radius:3px;background:var(--bronze);">
+                                    </div>
+                                    <div>
+                                        <p style="font-size:13px;font-weight:700;color:var(--fg);">Perunggu</p>
+                                        <p id="donutPerungguLabel" style="font-size:11px;color:var(--muted);">— medali
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider" style="padding:0 24px;"></div>
+
+    <!-- Prestasi Section — Big Numbers -->
+    <section id="prestasi" style="padding:100px 24px;position:relative;z-index:1;">
+        <div style="max-width:1280px;margin:0 auto;text-align:center;">
+            <div class="reveal">
+                <div class="section-label" style="margin:0 auto 16px;"><i class="fa-solid fa-bolt"></i> Rekor</div>
+                <h2 class="section-title" style="margin:0 auto 14px;">Angka yang Berbicara</h2>
+                <p class="section-desc" style="margin:0 auto 52px;text-align:center;">Tiga edisi Porprov menghasilkan
+                    pencapaian yang tak terbantahkan bagi Kota Pasuruan.</p>
+            </div>
+
+            <div class="stat-grid-4 reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+                <div class="stat-card">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                        <div class="medal-icon gold-icon"><i class="fa-solid fa-medal"></i></div>
+                        <span
+                            style="font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;">Total
+                            Emas</span>
+                    </div>
+                    <p class="counter-value" id="prestasiEmas" style="color:var(--gold);" data-target="0">—</p>
+                    <p id="prestasiEmasSub" style="font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;">
+                        dari — edisi Porprov</p>
+                </div>
+                <div class="stat-card">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                        <div class="medal-icon silver-icon"><i class="fa-solid fa-medal"></i></div>
+                        <span
+                            style="font-size:11px;font-weight:700;color:var(--silver);text-transform:uppercase;letter-spacing:0.06em;">Total
+                            Perak</span>
+                    </div>
+                    <p class="counter-value" id="prestasiPerak" style="color:var(--silver);" data-target="0">—</p>
+                    <p style="font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;">konsisten di setiap
+                        edisi</p>
+                </div>
+                <div class="stat-card">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                        <div class="medal-icon bronze-icon"><i class="fa-solid fa-medal"></i></div>
+                        <span
+                            style="font-size:11px;font-weight:700;color:var(--bronze);text-transform:uppercase;letter-spacing:0.06em;">Total
+                            Perunggu</span>
+                    </div>
+                    <p class="counter-value" id="prestasiPerunggu" style="color:var(--bronze);" data-target="0">—</p>
+                    <p style="font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;">fondasi kekuatan tim
+                    </p>
+                </div>
+                <div class="stat-card" style="border-color:var(--accent);background:var(--accent-light);">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                        <div class="medal-icon" style="background:var(--accent);color:#fff;"><i
+                                class="fa-solid fa-trophy"></i></div>
+                        <span
+                            style="font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;">Grand
+                            Total</span>
+                    </div>
+                    <p class="counter-value" id="prestasiTotal" style="color:var(--accent);" data-target="0">—</p>
+                    <p style="font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;">medali untuk Kota
+                        Pasuruan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider" style="padding:0 24px;"></div>
+
+    <!-- Sejarah / Timeline Section -->
+    <section id="sejarah" style="padding:100px 24px;position:relative;z-index:1;">
+        <div style="max-width:1280px;margin:0 auto;">
+            <div class="reveal" style="text-align:center;margin-bottom:52px;">
+                <div class="section-label" style="margin:0 auto 16px;"><i class="fa-solid fa-timeline"></i> Linimasa
+                </div>
+                <h2 class="section-title" style="margin:0 auto 14px;">Jejak Setiap Edisi</h2>
+                <p class="section-desc" style="margin:0 auto;text-align:center;">Dari edisi pertama hingga terakhir,
+                    setiap Porprov mencatatkan cerita prestasi yang berbeda.</p>
+            </div>
+
+            <div style="position:relative;padding-left:40px;" id="timelineContainer">
+                <div class="timeline-line"></div>
+                <!-- Timeline items will be rendered dynamically -->
+                <div id="timelineItems" style="display:flex;flex-direction:column;gap:28px;">
+                    <div style="text-align:center;padding:40px 0;color:var(--muted);font-size:14px;">
+                        <i class="fa-solid fa-spinner fa-spin" style="margin-right:8px;"></i> Memuat data linimasa...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider" style="padding:0 24px;"></div>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section" style="padding:120px 24px;position:relative;z-index:1;">
+        <div style="max-width:640px;margin:0 auto;text-align:center;" class="reveal">
+            <div
+                style="width:56px;height:56px;border-radius:14px;background:var(--accent);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 4px 16px rgba(37,99,235,0.2);">
+                <i class="fa-solid fa-chart-column" style="color:#fff;font-size:22px;"></i>
+            </div>
+            <h2
+                style="font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-0.02em;line-height:1.15;margin-bottom:16px;color:var(--fg);">
+                Jelajahi Data<br><span style="color:var(--accent);">Secara Mendalam</span>
+            </h2>
+            <p
+                style="color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:36px;max-width:460px;margin-left:auto;margin-right:auto;">
+                Buka dashboard interaktif untuk melihat statistik lengkap, grafik perbandingan, dan tabel detail dari
+                setiap edisi Porprov.
+            </p>
+            <a href="data/statistik.html" class="btn-primary" style="font-size:15px;padding:15px 36px;">
+                <i class="fa-solid fa-arrow-right"></i> Buka Dashboard Statistik
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding:24px 24px;position:relative;z-index:1;">
+        <div style="max-width:1280px;margin:0 auto;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <div
+                        style="width:32px;height:32px;border-radius:8px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;">
+                        <i class="fa-solid fa-trophy" style="color:var(--accent);font-size:13px;"></i>
+                    </div>
+                    <span style="font-weight:800;font-size:14px;color:var(--fg);">Porprov<span
+                            style="color:var(--accent);">Jatim</span></span>
+                </div>
+                <div style="display:flex;gap:24px;flex-wrap:wrap;">
+                    <a href="#tentang">Tentang</a>
+                    <a href="#prestasi">Prestasi</a>
+                    <a href="#sejarah">Sejarah</a>
+                    <a href="#unggulan">Cabor</a>
+                </div>
+                <p style="font-size:12px;color:var(--muted-light);font-weight:500;">2025 — Data Porprov Kota Pasuruan
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script/home.js"></script>
+</body>
+
+</html>
